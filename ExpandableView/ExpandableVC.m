@@ -67,15 +67,16 @@
     __weak __typeof(self)weakSelf = self;
 
     NSTimeInterval duration = 0.5;
-
     [UIView animateWithDuration:duration
                           delay:0
-                        options:UIViewAnimationOptionCurveEaseInOut
+         usingSpringWithDamping:0.8
+          initialSpringVelocity:0.5
+                        options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-        [weakSelf.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        [weakSelf updateCollapseExpandButtonTitle];
-    }];
+                         [weakSelf.view layoutIfNeeded];
+                     } completion:nil];
+
+    [self updateCollapseExpandButtonTitle];
 }
 
 //##############################################################################
